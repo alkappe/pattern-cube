@@ -66,7 +66,3 @@ scene.addEventListener('touchmove', function(event) {
   x.end = 0;
 
 })
-
-cta.onclick = function () {
-  window.location.href = 'http://www.alkacappellazzo.it/'
-}
