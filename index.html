@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta content='width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;' name='viewport' />
+    <meta name="viewport" content="width=device-width" />
+    <style>
+      * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); -webkit-text-size-adjust: none; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;}
+      *::-moz-selection { background: rgba(0, 0, 0, .1) }
+      *::selection { background: rgba(0, 0, 0, .1);}
+      body { background: #000000;}
+      #dx { position: fixed; z-index: 999; top: 50%; bottom: 50%; right: 10px; transform: translateY(-50%);}
+      #sx { position: fixed; z-index: 999; top: 50%; bottom: 50%; left: 10px; transform: translateY(-50%); }
+      #cta { width: 100%; height: 100%; position: fixed; top: 0;  z-index: 0}
+
+      .scene { margin: 0px auto; width: 100%; height: 100%; -webkit-perspective: 800px; perspective: 800px; will-change: transform; -webkit-transform-style: preserve-3d; transform-style: preserve-3d; }
+      .cube { position:relative; background: #000000; transition: transform .6s cubic-bezier(.4, .0, .2, 1); width: 100vw; height: 100%; position: relative; -webkit-transform-style: preserve-3d; animation-play-state: paused; will-change: transform; -webkit-transform-style: preserve-3d; transform-style: preserve-3d;}
+      .cube-face { opacity: 0.6; width: 100%; height: 100%;-webkit-perspective: 800px; position: fixed; opacity: 1; text-align: center;  font-size: 30px; color: white; will-change: transform; /*-webkit-transform-style: preserve-3d; transform-style: preserve-3d;*/}
+      .cube-face-front{  background: #000000; -webkit-transform: translateZ(165px);}
+      .cube-face-back { background: #000000; -webkit-transform:  rotateY(180deg) translateZ(165px);}
+      .cube-face-left {  background: #000000; -webkit-transform: rotateY(-90deg) translateZ(165px);}
+      .cube-face-right {  background: #000000; -webkit-transform: rotateY(90deg) translateZ(165px);}
+      .right { -webkit-animation: faceBack 2s ease;  -webkit-animation-fill-mode: forwards; }
+      .left { -webkit-animation: faceFront 2s ease }
+      .overlay { background: #000000; z-index: 2; width: 100vw; height: 100vh; position: absolute; top: 0; opacity: 0; -webkit-perspective: 1800px;}
+      .image-face { position: relative; z-index: 1; background: #000000; width: 100%; height: auto; margin: 0 auto; -webkit-transition: opacity .6s cubic-bezier(.4, .0, .2, 1); transition: opacity .6s cubic-bezier(.4, .0, .2, 1); will-change: transform; -webkit-transform-style: preserve-3d; transform-style: preserve-3d;}
+      .hover { position: relative;}
+
+      @media only screen
+        and (device-width : 360px)
+        and (device-height : 740px) {
+          /*.cube-face-front{  -webkit-transform: translateZ(190px);}
+          .cube-face-back { -webkit-transform:  rotateY(180deg) translateZ(190px);}
+          .cube-face-left {  background: #000000; -webkit-transform: rotateY(-90deg) translateZ(170px);}
+          .cube-face-right {  background: #000000; -webkit-transform: rotateY(90deg) translateZ(170px);}*/
+        }
+
+        @media only screen
+         and (max-width : 1080px)
+         and (max-height : 1920px) {
+         /* Styles here */
+         .image-face { width: 86vw }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="scene">
+      <div class="cube">
+        <div class="cube-face cube-face-front">
+          <div class="overlay" data-overlay="0"></div>
+          <img class="image-face" src="assets/1.png">
+        </div>
+        <div class="cube-face cube-face-back">
+          <div class="overlay" data-overlay="1"></div>
+          <img class="image-face" src="assets/2.png">
+        </div>
+        <div class="cube-face cube-face-left">
+          <div class="overlay" data-overlay="2"></div>
+          <img class="image-face" src="assets/3.png">
+        </div>
+        <div class="cube-face cube-face-right">
+          <div class="overlay" data-overlay="3"></div>
+          <img class="image-face" src="assets/4.png">
+        </div>
+        <!--<div class="cube-face cube-face-top">Top</div>
+        <div class="cube-face cube-face-bottom">Bottom</div>-->
+      </div>
+    </div>
+    <script src="src/index.js"></script>
+  </body>
+</html>
